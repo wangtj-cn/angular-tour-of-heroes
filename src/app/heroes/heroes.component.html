@@ -1,14 +1,22 @@
-<!-- 使用管道操作 -->
-<h2>{{hero.name | uppercase }}</h2>
-<div>
-    <span>id: </span>{{hero.id}}
-</div>
-<div>
-    <span>name: </span>{{hero.name}}
-</div>
+<h2>My Heroes</h2>
 
-<div>
-    <label for="name">Hero name: </label>
-    <!-- ngModel 双向数据绑定语法 -->
-    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+<!--  -->
+<ul class="heroes" *ngIf="heroes.length > 0">
+    <!-- *ngFor 是一个 Angular 的复写器（repeater）指令。 它会为列表中的每项数据复写它的宿主元素。 -->
+    <!-- 绑定点击事件 -->
+    <!-- 为选定的英雄设置样式 -->
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+
+<!-- 使用 *ngIf 隐藏空白的详情 -->
+<div *ngIf="selectedHero">
+    <!-- 使用管道操作 -->
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+        <label for="hero-name">Hero name: </label>
+        <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+    </div>
 </div>
