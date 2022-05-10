@@ -10,13 +10,5 @@
     </li>
 </ul>
 
-<!-- 使用 *ngIf 隐藏空白的详情 -->
-<div *ngIf="selectedHero">
-    <!-- 使用管道操作 -->
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{selectedHero.id}}</div>
-    <div>
-        <label for="hero-name">Hero name: </label>
-        <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-    </div>
-</div>
+<!-- 这是一种单向数据绑定。从 HeroesComponent 的 selectedHero 属性绑定到目标元素的 hero 属性，并映射到了 HeroDetailComponent 的 hero 属性。 -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
