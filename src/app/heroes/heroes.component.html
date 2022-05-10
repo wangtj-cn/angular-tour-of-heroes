@@ -1,0 +1,14 @@
+<!-- 使用管道操作 -->
+<h2>{{hero.name | uppercase }}</h2>
+<div>
+    <span>id: </span>{{hero.id}}
+</div>
+<div>
+    <span>name: </span>{{hero.name}}
+</div>
+
+<div>
+    <label for="name">Hero name: </label>
+    <!-- ngModel 双向数据绑定语法 -->
+    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
